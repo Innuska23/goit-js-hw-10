@@ -51,9 +51,10 @@ const renderCountry = ({ name, capital, population, languages, flags }) => {
 function handleChange(e) {
     const countryName = e.target.value.trim();
 
+    cleanResult();
+
     if (!countryName) return;
 
-    cleanResult();
     fetchCountries(countryName).then((result) => {
         if (result.length > 10) {
             Notiflix.Notify.info(NOTIFY_MSG.TOO_MANY_COUNTRIES)
